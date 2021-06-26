@@ -1,5 +1,5 @@
 const express = require('express');
-const route = require('./index');
+const route = require('./route');
 const path = require('path')
 
 const server = express();
@@ -14,4 +14,4 @@ server.use(express.urlencoded({extended: true}))
 
 server.use(route);
 
-server.listen(3000, () => console.log("Rodando..."));
+server.listen(process.env.PORT || 3000, () => console.log("Rodando..."));

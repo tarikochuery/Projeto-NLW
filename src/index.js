@@ -1,17 +1,17 @@
 const express = require('express');
-const QuestionController = require('./controllers/QuestionController')
-const RoomController = require('./controllers/RoomController')
+const route = require('./index');
+const path = require('path')
 
-const route = express.Router();
+const server = express();
 
-route.get('/', (req, res) => res.render('index', {page: 'enter-room'}));
-route.get('/create-pass', (req,res) => res.render('index', {page: 'create-pass'}));
+server.set('view engine', 'ejs');
 
-route.post('/create-room', RoomController.create)
-route.get('/room/:room', RoomController.open);
-route.post('/enterroom', RoomController.enter)
+server.use(express.static('public'));
 
-route.post('/question/create/:room', QuestionController.create)
-route.post('/question/:room/:question/:action', QuestionController.index);
+server.set('views', path.join(__dirname, 'views'));
 
-module.exports = route;
+server.use(express.urlencoded({extended: true}))
+
+server.use(route);
+
+server.listen(3000, () => console.log("Rodando..."));

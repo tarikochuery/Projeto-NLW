@@ -2,9 +2,9 @@
   "name": "ProjetoNLW",
   "version": "1.0.0",
   "description": "Projeto feito na semana NLW da RocketSeat",
-  "main": "src/server.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "nodemon .",
+    "start": "node .",
     "init-db": "node src/db/init.js"
   },
   "repository": {
